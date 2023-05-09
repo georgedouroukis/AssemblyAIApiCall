@@ -1,3 +1,5 @@
 *.class
+*.properties
 /.settings
 Constants.java
+/test
