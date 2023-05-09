@@ -13,7 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 
-import com.google.gson.Gson;
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -38,9 +38,8 @@ public class FileUploader {
     	HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         System.out.println(response.body());
        
-        
-        Gson gson = new Gson();
-        JsonObject jsonObject = new JsonParser().parse(response.body()).getAsJsonObject();
+
+        JsonObject jsonObject = JsonParser.parseString(response.body()).getAsJsonObject();
         String url = jsonObject.get("upload_url").getAsString(); 
         System.out.println(url);
         return url;
